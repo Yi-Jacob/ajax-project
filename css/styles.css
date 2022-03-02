@@ -53,6 +53,8 @@
 .nav-title {
   font-size: 2.3rem;
   margin: 1rem;
+  text-decoration: none;
+  color: black;
 }
 
 input:focus {
