@@ -1,0 +1,37 @@
+.grey-background {
+  background-color: #f2f2f2;
+}
+
+.nav-color {
+  background-color: #f2a13f;
+}
+
+.margin-left {
+  margin-left: 2rem;
+}
+
+.font-caveat {
+  font-family: Caveat, cursive;
+}
+
+.font-wellfleet {
+  font-family: Wellfleet, cursive;
+}
+
+.main-img {
+  object-fit: contain;
+  width: 350px;
+  height: 350px;
+}
+
+.search-bar {
+  width: 82%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.margin-zero {
+  margin: 0;
+}
