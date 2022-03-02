@@ -25,7 +25,12 @@
 }
 
 .search-bar {
-  width: 82%;
+  width: 100%;
+  color: white;
+  border-right: none;
+  border-radius: 3%;
+  border: 2px #d4d9de;
+  height: 1.5rem;
 }
 
 .justify-center {
@@ -34,4 +39,15 @@
 
 .margin-zero {
   margin: 0;
+}
+
+.submit-button {
+  background-color: white;
+  border-left: none;
+  border-radius: 3%;
+  border: 2px #d4d9de;
+}
+
+.search-icon {
+  color: #8a8a8e;
 }
