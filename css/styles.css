@@ -6,10 +6,6 @@
   background-color: #f2a13f;
 }
 
-.margin-left {
-  margin-left: 2rem;
-}
-
 .font-caveat {
   font-family: Caveat, cursive;
 }
@@ -26,23 +22,12 @@
 
 .search-bar {
   width: 100%;
-  color: black;
-  border-right: none;
   border: 2px #d4d9de;
   height: 1.5rem;
 }
 
-.justify-center {
-  justify-content: center;
-}
-
-.margin-zero {
-  margin: 0;
-}
-
 .submit-button {
   background-color: white;
-  border-left: none;
   border: 2px #d4d9de;
 }
 

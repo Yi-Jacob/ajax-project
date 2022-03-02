@@ -14,7 +14,7 @@ function getResults(event) {
 
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    // console.log(xhr.response);
+
   });
   xhr.send();
   $searchForm.reset();
