@@ -1,7 +1,10 @@
 var $searchInput = document.getElementById('input');
 var $submitButton = document.querySelector('.submit-button');
+var $searchForm = document.getElementById('search-form');
 
-function submitInput(event) {
+$submitButton.addEventListener('click', getResults);
+
+function getResults(event) {
 
   var inputValue = $searchInput.value;
 
@@ -13,9 +16,6 @@ function submitInput(event) {
   xhr.addEventListener('load', function () {
     // console.log(xhr.response);
   });
-
   xhr.send();
-
+  $searchForm.reset();
 }
-
-$submitButton.addEventListener('click', submitInput);
