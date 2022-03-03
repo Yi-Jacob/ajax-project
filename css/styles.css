@@ -55,6 +55,7 @@ button:active {
   background-color: white;
   padding: 0.7rem;
   margin: 0.3rem;
+  width: 350px;
 }
 
 .font-bold {

@@ -2,12 +2,22 @@ var $searchInput = document.getElementById('input');
 var $submitButton = document.querySelector('.submit-button');
 var $searchForm = document.getElementById('search-form');
 var $searchResults = document.getElementById('results');
+var $resultsHeader = document.getElementById('results-header');
 
 $submitButton.addEventListener('click', getResults);
 
 function getResults(event) {
   event.preventDefault();
   var inputValue = $searchInput.value;
+
+  function titleCase(string) {
+    string = string.toLowerCase().split(' ');
+    for (var i = 0; i < string.length; i++) {
+      string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1);
+    }
+    return string.join(' ');
+  }
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.openbrewerydb.org/breweries?by_city=' + inputValue);
   xhr.responseType = 'json';
@@ -21,10 +31,12 @@ function getResults(event) {
       var search = renderResults(name, street, city, state, zip);
       search.addEventListener('click', getBreweries);
       $searchResults.appendChild(search);
+      $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
     }
   });
   xhr.send();
   $searchForm.reset();
+
 }
 
 function renderResults(name, street, city, state, zip) {
@@ -33,19 +45,19 @@ function renderResults(name, street, city, state, zip) {
 
   var $name = document.createElement('h3');
   initialDiv.appendChild($name);
-  name.textContent = name;
+  $name.textContent = name;
 
   var $addressTitle = document.createElement('h4');
   $addressTitle.textContent = 'Address:';
-  $name.appendChild($addressTitle);
+  initialDiv.appendChild($addressTitle);
 
   var $address = document.createElement('p');
   $address.textContent = street;
-  $addressTitle.appendChild($address);
+  initialDiv.appendChild($address);
 
   var $info = document.createElement('p');
   $info.textContent = city + ', ' + state + ', ' + zip;
-  $address.appendChild($info);
+  initialDiv.appendChild($info);
 
   return initialDiv;
 }
