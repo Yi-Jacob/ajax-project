@@ -22,26 +22,32 @@
   </header>
 
   <main>
-    <div class="container">
-      <div class="row margin-top">
-        <div class="column-full text-align-center font-wellfleet">
-          <h2 class="">Looking to relax, but you don’t know where to go?</h2>
-          <h3 class="">Find hop-piness near you by searching your local area for breweries! The
-            drinks are waiting, you just need to find them!</h3>
+    <div class="view" data-view="search-page">
+      <div class="container">
+        <div class="row margin-top">
+          <div class="column-full text-align-center font-wellfleet">
+            <h2 class="">Looking to relax, but you don’t know where to go?</h2>
+            <h3 class="">Find hop-piness near you by searching your local area for breweries! The
+              drinks are waiting, you just need to find them!</h3>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <img src="images/Pasted-Graphic.png" class="main-img margin-auto">
-      </div>
-      <div class="row">
-        <div class="column-full">
-          <form class="flex" data-view="search-page" id="search-form">
-            <input required type="text" placeholder="Search by City" class="search-bar" id="input">
-            <button type="submit" class="submit-button"><i class="fas fa-search search-icon"></i></button>
-          </form>
+        <div class="row">
+          <img src="images/Pasted-Graphic.png" class="main-img margin-auto">
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <form class="flex" data-view="search-page" id="search-form">
+              <input required type="text" placeholder="Search by City" class="search-bar" id="input">
+              <button type="submit" class="submit-button"><i class="fas fa-search search-icon"></i></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+    <div class="view hidden" data-view="results-page">
+      <div class="container">
+
+      </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
