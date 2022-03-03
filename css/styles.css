@@ -50,3 +50,13 @@ a:hover {
 button:active {
   background-color: #eff7ef;
 }
+
+.white-box {
+  background-color: white;
+  padding: 0.7rem;
+  margin: 0.3rem;
+}
+
+.font-bold {
+  font-weight: 800;
+}
