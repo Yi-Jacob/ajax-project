@@ -8,11 +8,40 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Wellfleet&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
+<body class="grey-background">
+  <header class="nav-color">
+    <div class="row">
+      <a href="#" class="font-caveat nav-title">Find Hoppiness   <i class="fas fa-beer"></i> </a>
+    </div>
   </header>
+
   <main>
+    <div class="container">
+      <div class="row margin-top">
+        <div class="column-full text-align-center font-wellfleet">
+          <h2 class="">Looking to relax, but you don’t know where to go?</h2>
+          <h3 class="">Find hop-piness near you by searching your local area for breweries! The
+            drinks are waiting, you just need to find them!</h3>
+        </div>
+      </div>
+      <div class="row">
+        <img src="images/Pasted-Graphic.png" class="main-img margin-auto">
+      </div>
+      <div class="row">
+        <div class="column-full">
+          <form class="flex" data-view="search-page" id="search-form">
+            <input required type="text" placeholder="Search by City" class="search-bar" id="input">
+            <button type="submit" class="submit-button"><i class="fas fa-search search-icon"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
