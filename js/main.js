@@ -31,7 +31,6 @@ function getResults(event) {
       var state = xhr.response[i].state;
       var zip = xhr.response[i].postal_code;
       var search = renderResults(name, street, city, state, zip);
-      search.addEventListener('click', getBreweries);
       $searchResults.appendChild(search);
       $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
     }
@@ -63,8 +62,4 @@ function renderResults(name, street, city, state, zip) {
   initialDiv.appendChild($info);
 
   return initialDiv;
-}
-
-function getBreweries() {
-
 }
