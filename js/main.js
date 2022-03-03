@@ -3,8 +3,6 @@ var $searchForm = document.getElementById('search-form');
 var $searchResults = document.getElementById('results');
 var $resultsHeader = document.getElementById('results-header');
 var $submitButton = document.querySelector('.submit-button');
-// var $searchView = document.querySelector('.search-view');
-// var $resultView = document.querySelector('.results-view');
 var $view = document.querySelectorAll('.view');
 
 $submitButton.addEventListener('click', getResults);
@@ -51,6 +49,7 @@ function renderResults(name, street, city, state, zip) {
 
   var $addressTitle = document.createElement('h4');
   $addressTitle.textContent = 'Address:';
+  $addressTitle.className = 'font-bold';
   initialDiv.appendChild($addressTitle);
 
   var $address = document.createElement('p');
@@ -74,5 +73,4 @@ function swapView(string) {
       $view[i].className = 'view';
     }
   }
-
 }

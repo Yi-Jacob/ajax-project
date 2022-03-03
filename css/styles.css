@@ -53,11 +53,11 @@ button:active {
 
 .white-box {
   background-color: white;
-  padding: 0.7rem;
-  margin: 0.3rem;
+  padding: 1rem;
+  margin: 0.3rem 1rem;
   width: 350px;
 }
 
 .font-bold {
-  font-weight: 800;
+  font-weight: 900;
 }
