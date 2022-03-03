@@ -1,8 +1,10 @@
 var $searchInput = document.getElementById('input');
-var $submitButton = document.querySelector('.submit-button');
 var $searchForm = document.getElementById('search-form');
 var $searchResults = document.getElementById('results');
 var $resultsHeader = document.getElementById('results-header');
+var $submitButton = document.querySelector('.submit-button');
+var $searchView = document.querySelector('.search-view');
+var $resultView = document.querySelector('.results-view');
 
 $submitButton.addEventListener('click', getResults);
 
@@ -36,7 +38,8 @@ function getResults(event) {
   });
   xhr.send();
   $searchForm.reset();
-
+  $searchView.className = 'search-view hidden';
+  $resultView.className = 'result-view';
 }
 
 function renderResults(name, street, city, state, zip) {
