@@ -3,8 +3,9 @@ var $searchForm = document.getElementById('search-form');
 var $searchResults = document.getElementById('results');
 var $resultsHeader = document.getElementById('results-header');
 var $submitButton = document.querySelector('.submit-button');
-var $searchView = document.querySelector('.search-view');
-var $resultView = document.querySelector('.results-view');
+// var $searchView = document.querySelector('.search-view');
+// var $resultView = document.querySelector('.results-view');
+var $view = document.querySelectorAll('.view');
 
 $submitButton.addEventListener('click', getResults);
 
@@ -37,8 +38,7 @@ function getResults(event) {
   });
   xhr.send();
   $searchForm.reset();
-  $searchView.className = 'search-view hidden';
-  $resultView.className = 'result-view';
+  swapView(data.view);
 }
 
 function renderResults(name, street, city, state, zip) {
@@ -62,4 +62,17 @@ function renderResults(name, street, city, state, zip) {
   initialDiv.appendChild($info);
 
   return initialDiv;
+}
+
+function swapView(string) {
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].dataset.view === string) {
+      $view[i].className = 'view hidden';
+      var currentView = $view[i].dataset.view;
+      data.view = currentView;
+    } else {
+      $view[i].className = 'view';
+    }
+  }
+
 }
