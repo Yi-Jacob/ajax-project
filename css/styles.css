@@ -68,3 +68,14 @@ button:active {
 .underline {
   text-decoration: underline;
 }
+
+.three-dots {
+  color: black;
+}
+
+.dots-button {
+  background-color: white;
+  border: none;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}

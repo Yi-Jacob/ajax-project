@@ -62,6 +62,14 @@ function renderResults(name, street, city, state, zip) {
   $info.textContent = city + ', ' + state + ', ' + zip;
   initialDiv.appendChild($info);
 
+  var $button = document.createElement('button');
+  $button.className = 'dots-button';
+  initialDiv.appendChild($button);
+
+  var $icon = document.createElement('i');
+  $icon.className = 'fas fa-ellipsis fa-2x three-dots';
+  $button.appendChild($icon);
+
   return initialDiv;
 }
 
