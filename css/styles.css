@@ -59,10 +59,19 @@ button:active {
   background-color: white;
   padding: 0 1rem;
   margin: 0.3rem 1rem;
-  width: 350px;
   border-radius: 3%;
   border-style: solid;
   border-color: #afafaf;
+}
+
+.white-box-dimensions {
+  width: 350px;
+  max-height: 240px;
+}
+
+.new-dimensions {
+  width: 350px;
+  max-height: 320px;
 }
 
 .underline {
@@ -76,6 +85,14 @@ button:active {
 .dots-button {
   background-color: white;
   border: none;
-  margin-bottom: 0.5rem;
   padding: 0;
+}
+
+h2,
+h3 {
+  margin: 0.8rem 0;
+}
+
+p {
+  margin: 0.6rem 0;
 }

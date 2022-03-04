@@ -43,7 +43,7 @@ function getResults(event) {
 
 function renderResults(name, street, city, state, zip, url, type) {
   var initialDiv = document.createElement('div');
-  initialDiv.className = 'white-box';
+  initialDiv.className = 'white-box white-box-dimensions';
 
   var $name = document.createElement('h2');
   initialDiv.appendChild($name);
@@ -89,24 +89,33 @@ function renderResults(name, street, city, state, zip, url, type) {
   $button.className = 'dots-button';
   initialDiv.appendChild($button);
   $button.addEventListener('click', moreInfo);
-  // $button.addEventListener('click', lessInfo);
 
   var $icon = document.createElement('i');
   $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
   $button.appendChild($icon);
 
   function moreInfo(event) {
-    $url.className = 'view';
-    $type.className = 'view';
-    $icon.className = 'fa-solid fa-caret-up fa-2x fa-icon';
+    if ($url.className === 'view hidden') {
+      $url.className = 'view';
+    } else if ($url.className === 'view') {
+      $url.className = 'view hidden';
+    }
+    if ($type.className === 'view hidden') {
+      $type.className = 'view';
+    } else if ($type.className === 'view') {
+      $type.className = 'view hidden';
+    }
+    if ($icon.className === 'fas fa-ellipsis fa-2x fa-icon') {
+      $icon.className = 'fa-solid fa-caret-up fa-2x fa-icon';
+    } else if ($icon.className === 'fa-solid fa-caret-up fa-2x fa-icon') {
+      $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
+    }
+    if (initialDiv.className === 'white-box white-box-dimensions') {
+      initialDiv.className = 'white-box new-dimensions';
+    } else if (initialDiv.className === 'white-box new-dimensions') {
+      initialDiv.className = 'white-box white-box-dimensions';
+    }
   }
-
-  // function lessInfo(event) {
-  //   $url.className = 'view hidden';
-  //   $type.className = 'view hidden';
-  //   $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
-  // }
-
   return initialDiv;
 }
 
