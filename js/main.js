@@ -65,6 +65,7 @@ function renderResults(name, street, city, state, zip) {
   var $button = document.createElement('button');
   $button.className = 'dots-button';
   initialDiv.appendChild($button);
+  $button.addEventListener('click', moreInfo);
 
   var $icon = document.createElement('i');
   $icon.className = 'fas fa-ellipsis fa-2x three-dots';
@@ -83,4 +84,8 @@ function swapView(string) {
       $view[i].className = 'view';
     }
   }
+}
+
+function moreInfo(event) {
+  // console.log('test');
 }
