@@ -81,9 +81,17 @@ function renderResults(name, street, city, state, zip, url, type) {
   }
 
   var $type = document.createElement('p');
-  $type.textContent = 'Brewery Type: ' + titleCase(type);
   initialDiv.appendChild($type);
   $type.className = 'view hidden';
+
+  var $span1 = document.createElement('span');
+  $span1.className = 'underline';
+  $span1.textContent = 'Brewery Type:';
+  $type.appendChild($span1);
+
+  var $span2 = document.createElement('span');
+  $span2.textContent = ' ' + titleCase(type);
+  $type.appendChild($span2);
 
   var $button = document.createElement('button');
   $button.className = 'dots-button';
@@ -130,7 +138,3 @@ function swapView(string) {
     }
   }
 }
-
-// function moreInfo(event) {
-//   console.log('test');
-// }
