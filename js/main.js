@@ -64,13 +64,27 @@ function renderResults(name, street, city, state, zip, url, type) {
   $info.textContent = city + ', ' + state + ', ' + zip;
   initialDiv.appendChild($info);
 
+  var $url = document.createElement('a');
   if (url !== null) {
-    var $url = document.createElement('a');
     $url.setAttribute('href', url);
     $url.textContent = 'Website: ' + url;
-    initialDiv.appendChild($url);
-    $url.className = 'view hidden';
+  } else {
+    $url.textContent = 'No Website Available';
   }
+  initialDiv.appendChild($url);
+  $url.className = 'view hidden';
+
+  // if (url !== null) {
+  //   var $url = document.createElement('a');
+  //   $url.setAttribute('href', url);
+  //   $url.textContent = 'Website: ' + url;
+  //   initialDiv.appendChild($url);
+  //   $url.className = 'view hidden';
+  // } else {
+  //   $url.textContent = 'No Website Available';
+  //   initialDiv.appendChild($url);
+  //   $url.className = 'view hidden';
+  // }
 
   function titleCase(string) {
     string = string.toLowerCase().split(' ');
