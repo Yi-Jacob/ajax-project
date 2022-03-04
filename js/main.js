@@ -43,18 +43,20 @@ function renderResults(name, street, city, state, zip) {
   var initialDiv = document.createElement('div');
   initialDiv.className = 'white-box';
 
-  var $name = document.createElement('h3');
+  var $name = document.createElement('h2');
   initialDiv.appendChild($name);
   $name.textContent = name;
 
-  var $addressTitle = document.createElement('h4');
+  var $addressTitle = document.createElement('h3');
   $addressTitle.textContent = 'Address:';
-  $addressTitle.className = 'font-bold';
+  $addressTitle.className = 'underline';
   initialDiv.appendChild($addressTitle);
 
-  var $address = document.createElement('p');
-  $address.textContent = street;
-  initialDiv.appendChild($address);
+  if (street !== null) {
+    var $address = document.createElement('p');
+    $address.textContent = street;
+    initialDiv.appendChild($address);
+  }
 
   var $info = document.createElement('p');
   $info.textContent = city + ', ' + state + ', ' + zip;

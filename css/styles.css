@@ -14,6 +14,10 @@
   font-family: Wellfleet, cursive;
 }
 
+.font-vollkorn {
+  font-family: Vollkorn, serif;
+}
+
 .main-img {
   object-fit: contain;
   width: 350px;
@@ -53,11 +57,14 @@ button:active {
 
 .white-box {
   background-color: white;
-  padding: 1rem;
+  padding: 0 1rem;
   margin: 0.3rem 1rem;
   width: 350px;
+  border-radius: 3%;
+  border-style: solid;
+  border-color: #afafaf;
 }
 
-.font-bold {
-  font-weight: 900;
+.underline {
+  text-decoration: underline;
 }
