@@ -14,6 +14,10 @@
   font-family: Wellfleet, cursive;
 }
 
+.font-vollkorn {
+  font-family: Vollkorn, serif;
+}
+
 .main-img {
   object-fit: contain;
   width: 350px;
@@ -26,13 +30,13 @@
   height: 1.5rem;
 }
 
+.search-icon {
+  color: #8a8a8e;
+}
+
 .submit-button {
   background-color: white;
   border: 2px #d4d9de;
-}
-
-.search-icon {
-  color: #8a8a8e;
 }
 
 .nav-title {
@@ -49,4 +53,18 @@ a:hover {
 
 button:active {
   background-color: #eff7ef;
+}
+
+.white-box {
+  background-color: white;
+  padding: 0 1rem;
+  margin: 0.3rem 1rem;
+  width: 350px;
+  border-radius: 3%;
+  border-style: solid;
+  border-color: #afafaf;
+}
+
+.underline {
+  text-decoration: underline;
 }

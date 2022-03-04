@@ -5,7 +5,7 @@
 .container {
   max-width: 575px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 .row {
@@ -20,17 +20,21 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 900px;
+    max-width: 1200px;
   }
 
   .column-full,
   .column-half {
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
   }
 
   .column-half {
     width: 50%;
   }
+}
+
+.column-third {
+  width: 33%;
 }
 
 .text-align-center {
@@ -47,4 +51,12 @@
 
 .flex {
   display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
 }
