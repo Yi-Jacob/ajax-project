@@ -29,7 +29,9 @@ function getResults(event) {
       var city = xhr.response[i].city;
       var state = xhr.response[i].state;
       var zip = xhr.response[i].postal_code;
-      var search = renderResults(name, street, city, state, zip);
+      var url = xhr.response[i].website_url;
+      var type = xhr.response[i].brewery_type;
+      var search = renderResults(name, street, city, state, zip, url, type);
       $searchResults.appendChild(search);
       $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
     }
@@ -39,7 +41,7 @@ function getResults(event) {
   swapView(data.view);
 }
 
-function renderResults(name, street, city, state, zip) {
+function renderResults(name, street, city, state, zip, url, type) {
   var initialDiv = document.createElement('div');
   initialDiv.className = 'white-box';
 
@@ -62,14 +64,48 @@ function renderResults(name, street, city, state, zip) {
   $info.textContent = city + ', ' + state + ', ' + zip;
   initialDiv.appendChild($info);
 
+  if (url !== null) {
+    var $url = document.createElement('a');
+    $url.setAttribute('href', url);
+    $url.textContent = 'Website: ' + url;
+    initialDiv.appendChild($url);
+    $url.className = 'view hidden';
+  }
+
+  function titleCase(string) {
+    string = string.toLowerCase().split(' ');
+    for (var i = 0; i < string.length; i++) {
+      string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1);
+    }
+    return string.join(' ');
+  }
+
+  var $type = document.createElement('p');
+  $type.textContent = 'Brewery Type: ' + titleCase(type);
+  initialDiv.appendChild($type);
+  $type.className = 'view hidden';
+
   var $button = document.createElement('button');
   $button.className = 'dots-button';
   initialDiv.appendChild($button);
   $button.addEventListener('click', moreInfo);
+  // $button.addEventListener('click', lessInfo);
 
   var $icon = document.createElement('i');
-  $icon.className = 'fas fa-ellipsis fa-2x three-dots';
+  $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
   $button.appendChild($icon);
+
+  function moreInfo(event) {
+    $url.className = 'view';
+    $type.className = 'view';
+    $icon.className = 'fa-solid fa-caret-up fa-2x fa-icon';
+  }
+
+  // function lessInfo(event) {
+  //   $url.className = 'view hidden';
+  //   $type.className = 'view hidden';
+  //   $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
+  // }
 
   return initialDiv;
 }
@@ -86,6 +122,6 @@ function swapView(string) {
   }
 }
 
-function moreInfo(event) {
-  // console.log('test');
-}
+// function moreInfo(event) {
+//   console.log('test');
+// }
