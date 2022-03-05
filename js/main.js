@@ -41,26 +41,26 @@ function getResults(event) {
   swapView(data.view);
 }
 
-function moreInfo($url, $type, $icon, initialDiv) {
-  if ($url.className === 'view hidden') {
-    $url.className = 'view';
-  } else if ($url.className === 'view') {
-    $url.className = 'view hidden';
+function moreInfo(a, b, c, d) {
+  if (a.className === 'view hidden') {
+    a.className = 'view';
+  } else if (a.className === 'view') {
+    a.className = 'view hidden';
   }
-  if ($type.className === 'view hidden') {
-    $type.className = 'view';
-  } else if ($type.className === 'view') {
-    $type.className = 'view hidden';
+  if (b.className === 'view hidden') {
+    b.className = 'view';
+  } else if (b.className === 'view') {
+    b.className = 'view hidden';
   }
-  if ($icon.className === 'fas fa-ellipsis fa-2x fa-icon') {
-    $icon.className = 'fa-solid fa-caret-up fa-2x fa-icon';
-  } else if ($icon.className === 'fa-solid fa-caret-up fa-2x fa-icon') {
-    $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
+  if (c.className === 'fas fa-ellipsis fa-2x fa-icon') {
+    c.className = 'fa-solid fa-caret-up fa-2x fa-icon';
+  } else if (c.className === 'fa-solid fa-caret-up fa-2x fa-icon') {
+    c.className = 'fas fa-ellipsis fa-2x fa-icon';
   }
-  if (initialDiv.className === 'white-box white-box-dimensions') {
-    initialDiv.className = 'white-box new-dimensions';
-  } else if (initialDiv.className === 'white-box new-dimensions') {
-    initialDiv.className = 'white-box white-box-dimensions';
+  if (d.className === 'white-box white-box-dimensions') {
+    d.className = 'white-box new-dimensions';
+  } else if (d.className === 'white-box new-dimensions') {
+    d.className = 'white-box white-box-dimensions';
   }
 }
 
@@ -118,31 +118,9 @@ function renderResults(name, street, city, state, zip, url, type) {
   $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
   $button.appendChild($icon);
 
-  $button.addEventListener('click', moreInfo);
-
-  // $button.addEventListener('click', moreInfo);
-  // function moreInfo(event) {
-  //   if ($url.className === 'view hidden') {
-  //     $url.className = 'view';
-  //   } else if ($url.className === 'view') {
-  //     $url.className = 'view hidden';
-  //   }
-  //   if ($type.className === 'view hidden') {
-  //     $type.className = 'view';
-  //   } else if ($type.className === 'view') {
-  //     $type.className = 'view hidden';
-  //   }
-  //   if ($icon.className === 'fas fa-ellipsis fa-2x fa-icon') {
-  //     $icon.className = 'fa-solid fa-caret-up fa-2x fa-icon';
-  //   } else if ($icon.className === 'fa-solid fa-caret-up fa-2x fa-icon') {
-  //     $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
-  //   }
-  //   if (initialDiv.className === 'white-box white-box-dimensions') {
-  //     initialDiv.className = 'white-box new-dimensions';
-  //   } else if (initialDiv.className === 'white-box new-dimensions') {
-  //     initialDiv.className = 'white-box white-box-dimensions';
-  //   }
-  // }
+  $button.addEventListener('click', function () {
+    moreInfo($url, $type, $icon, initialDiv);
+  });
   return initialDiv;
 }
 
