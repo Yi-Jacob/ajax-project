@@ -96,3 +96,9 @@ h3 {
 p {
   margin: 0.6rem 0;
 }
+
+.bookmark-button {
+  background-color: #f2a13f;
+  border: none;
+  padding: 1rem;
+}
