@@ -4,8 +4,14 @@ var $searchResults = document.getElementById('results');
 var $resultsHeader = document.getElementById('results-header');
 var $submitButton = document.querySelector('.submit-button');
 var $view = document.querySelectorAll('.view');
+var $bookmarks = document.querySelector('.bookmarks');
 
 $submitButton.addEventListener('click', getResults);
+$bookmarks.addEventListener('click', getBookmarks);
+
+function getBookmarks(event) {
+
+}
 
 function titleCase(string) {
   string = string.toLowerCase().split(' ');
@@ -110,13 +116,25 @@ function renderResults(name, street, city, state, zip, url, type) {
   $span2.textContent = ' ' + titleCase(type);
   $type.appendChild($span2);
 
+  var div1 = document.createElement('div');
+  div1.className = 'justify-between flex';
+  initialDiv.appendChild(div1);
+
   var $button = document.createElement('button');
   $button.className = 'dots-button';
-  initialDiv.appendChild($button);
+  div1.appendChild($button);
 
   var $icon = document.createElement('i');
   $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
   $button.appendChild($icon);
+
+  var $bookmarkButton = document.createElement('button');
+  $bookmarkButton.className = 'dots-button';
+  div1.appendChild($bookmarkButton);
+
+  var $plus = document.createElement('i');
+  $plus.className = 'fa-solid fa-plus fa-2x';
+  $bookmarkButton.appendChild($plus);
 
   $button.addEventListener('click', function () {
     moreInfo($url, $type, $icon, initialDiv);
