@@ -5,6 +5,7 @@ var $resultsHeader = document.getElementById('results-header');
 var $submitButton = document.querySelector('.submit-button');
 var $view = document.querySelectorAll('.view');
 var $bookmarks = document.querySelector('.bookmarks');
+// var $bookmarksList = document.getElementById('bookmarks');
 
 $submitButton.addEventListener('click', getResults);
 $bookmarks.addEventListener('click', viewBookmarks);
@@ -142,9 +143,6 @@ function renderResults(name, street, city, state, zip, url, type) {
     moreInfo($url, $type, $icon, initialDiv);
   });
 
-  $bookmarkButton.addEventListener('click', function () {
-    saveBookmark();
-  });
   return initialDiv;
 }
 
@@ -158,9 +156,4 @@ function swapView(string) {
       $view[i].className = 'view';
     }
   }
-}
-
-function saveBookmark(event) {
-  var $resultId = event.getAttribute('result-id');
-  data.bookmarks.push(data.results[$resultId]);
 }
