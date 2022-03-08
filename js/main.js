@@ -7,10 +7,10 @@ var $view = document.querySelectorAll('.view');
 var $bookmarks = document.querySelector('.bookmarks');
 
 $submitButton.addEventListener('click', getResults);
-$bookmarks.addEventListener('click', getBookmarks);
+$bookmarks.addEventListener('click', viewBookmarks);
 
-function getBookmarks(event) {
-
+function viewBookmarks(event) {
+  swapView(data.view);
 }
 
 function titleCase(string) {
@@ -24,7 +24,6 @@ function titleCase(string) {
 function getResults(event) {
   event.preventDefault();
   var inputValue = $searchInput.value;
-
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.openbrewerydb.org/breweries?by_city=' + inputValue);
   xhr.responseType = 'json';
@@ -83,11 +82,13 @@ function renderResults(name, street, city, state, zip, url, type) {
   $addressTitle.className = 'underline';
   initialDiv.appendChild($addressTitle);
 
+  var $address = document.createElement('p');
   if (street !== null) {
-    var $address = document.createElement('p');
     $address.textContent = street;
-    initialDiv.appendChild($address);
+  } else {
+    $address.textContent = 'No Address Found';
   }
+  initialDiv.appendChild($address);
 
   var $info = document.createElement('p');
   $info.textContent = city + ', ' + state + ', ' + zip;
@@ -135,9 +136,14 @@ function renderResults(name, street, city, state, zip, url, type) {
   var $plus = document.createElement('i');
   $plus.className = 'fa-solid fa-plus fa-2x';
   $bookmarkButton.appendChild($plus);
+  $plus.setAttribute('result-id', data.nextResultId);
 
   $button.addEventListener('click', function () {
     moreInfo($url, $type, $icon, initialDiv);
+  });
+
+  $bookmarkButton.addEventListener('click', function () {
+    saveBookmark();
   });
   return initialDiv;
 }
@@ -152,4 +158,9 @@ function swapView(string) {
       $view[i].className = 'view';
     }
   }
+}
+
+function saveBookmark(event) {
+  var $resultId = event.getAttribute('result-id');
+  data.bookmarks.push(data.results[$resultId]);
 }

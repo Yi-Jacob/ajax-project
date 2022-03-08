@@ -9,7 +9,7 @@ var data = {
   view: 'search-page'
 };
 
-var previousResultsJSON = localStorage.getItem('results-list');
+var previousResultsJSON = localStorage.getItem('bookmarks');
 
 window.addEventListener('beforeunload', handleUnload);
 
@@ -19,5 +19,5 @@ if (previousResultsJSON !== null) {
 
 function handleUnload(event) {
   var resultsJSON = JSON.stringify(data);
-  localStorage.setItem('results-list', resultsJSON);
+  localStorage.setItem('bookmarks', resultsJSON);
 }
