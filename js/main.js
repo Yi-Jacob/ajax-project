@@ -41,6 +41,7 @@ function getResults(event) {
       $searchResults.appendChild(search);
       $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
     }
+    data.current = xhr.response;
   });
   xhr.send();
   $searchForm.reset();
@@ -143,10 +144,15 @@ function renderResults(name, street, city, state, zip, url, type) {
     moreInfo($url, $type, $icon, initialDiv);
   });
 
+  $bookmarkButton.addEventListener('click', function () {
+    addToBookmarks();
+  });
+
   return initialDiv;
 }
 
 function swapView(string) {
+
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].dataset.view === string) {
       $view[i].className = 'view hidden';
@@ -156,4 +162,25 @@ function swapView(string) {
       $view[i].className = 'view';
     }
   }
+}
+
+// function bookmarks(element) {
+//   for (var i = 0; i < data.bookmarks.length; i++) {
+//     var name = data.bookmarks[i].name;
+//     var street = data.bookmarks[i].street;
+//     var city = data.bookmarks[i].city;
+//     var state = data.bookmarks[i].state;
+//     var zip = data.bookmarks[i].zip;
+//     var url = data.bookmarks[i].url;
+//     var type = data.bookmarks[i].type;
+//     var search = renderResults(name, street, city, state, zip, url, type);
+//     search.addEventListener('click', getResults);
+//     element.appendChild(search);
+//   }
+// }
+
+function addToBookmarks() {
+  data.bookmarks = 'hello';
+
+  swapView(data.view);
 }

@@ -2,6 +2,7 @@
 
 var data = {
   bookmarks: [],
+  current: [],
   detail: null,
   removeId: 0,
   nextResultId: 0,
