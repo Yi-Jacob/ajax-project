@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,31 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+  <link rel="stylesheet" crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Wellfleet&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/8109e1cd80.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="grey-background">
   <header class="nav-color">
     <div class="row">
-      <a href="" class="font-caveat nav-title">Find Hoppiness   <i class="fas fa-beer"></i> </a>
+      <a id="home" class="font-caveat nav-title">Find Hoppiness <i class="fas fa-beer"></i> </a>
+      <a id="bookmark" class="font-caveat nav-title nav-bookmark"><i class="fas fa-bookmark"></i> </a>
     </div>
   </header>
 
   <main>
-    <div class="view" data-view="search-page">
+    <div class="bigView" data-view="search-page">
       <div class="container">
         <div class="row margin-top">
           <div class="column-full text-align-center font-wellfleet">
             <h2>Looking to relax, but you don't know where to go?</h2>
-            <h3>Find hop-piness near you by searching your local area for breweries! The drinks are waiting, you just need to find them!</h3>
+            <h3>Find hop-piness near you by searching your local area for breweries! The drinks are waiting, you just
+              need to find them!</h3>
           </div>
         </div>
         <div class="row">
@@ -45,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="view hidden" data-view="results-page">
+    <div class="bigView hidden" data-view="results-page">
       <div class="container font-wellfleet">
         <div class="row">
           <div class="column-full">
@@ -53,11 +59,23 @@
           </div>
         </div>
         <div class="row font-vollkorn" id="results">
-
         </div>
       </div>
+    </div>
+    <div class="bigView hidden" data-view="bookmarks-page">
+      <div class="container font-wellfleet">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="result-header">Bookmarks</h1>
+          </div>
+        </div>
+        <div class="row font-vollkorn" id="bookmarks">
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
