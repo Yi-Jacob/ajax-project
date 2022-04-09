@@ -21,15 +21,15 @@ window.addEventListener('beforeunload', handleUnload);
 if (previousResultsJSON !== null) {
   data = JSON.parse(previousResultsJSON);
 
-  $bookmarks.innerHTML = data.bookmarks;
-  $searchResults.innerHTML = data.results;
-  $resultsHeader.innerHTML = data.header;
+  $bookmarks.textContent = data.bookmarks;
+  $searchResults.textContent = data.results;
+  $resultsHeader.textContent = data.header;
 }
 
 function handleUnload(event) {
-  data.results = $searchResults.innerHTML;
-  data.header = $resultsHeader.innerHTML;
-  data.bookmarks = $bookmarks.innerHTML;
+  data.results = $searchResults.textContent;
+  data.header = $resultsHeader.textContent;
+  data.bookmarks = $bookmarks.textContent;
   var resultsJSON = JSON.stringify(data);
   localStorage.setItem('results-list', resultsJSON);
 }
