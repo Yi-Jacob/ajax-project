@@ -3,15 +3,62 @@ var $searchForm = document.getElementById('search-form');
 var $searchResults = document.getElementById('results');
 var $resultsHeader = document.getElementById('results-header');
 var $submitButton = document.querySelector('.submit-button');
-var $view = document.querySelectorAll('.view');
-var $bookmarks = document.querySelector('.bookmarks');
-// var $bookmarksList = document.getElementById('bookmarks');
+var $view = document.querySelectorAll('.bigView');
+var $showBookmark = document.getElementById('bookmark');
+var $bookmarks = document.getElementById('bookmarks');
+var $home = document.getElementById('home');
 
 $submitButton.addEventListener('click', getResults);
-$bookmarks.addEventListener('click', viewBookmarks);
+$showBookmark.addEventListener('click', function () {
+  swapView('bookmarks-page');
+});
+$home.addEventListener('click', function () {
+  swapView('search-page');
+});
+swapView(data.view);
 
-function viewBookmarks(event) {
-  swapView(data.view);
+onLoad();
+function onLoad() {
+  var buttons = $bookmarks.getElementsByClassName('dots-button');
+  for (var button of buttons) {
+    button.addEventListener('click', onClickDots);
+  }
+  buttons = $bookmarks.getElementsByClassName('minus-button');
+  // eslint-disable-next-line no-redeclare
+  for (var button of buttons) {
+    button.addEventListener('click', onClickMinus);
+  }
+
+  buttons = $searchResults.getElementsByClassName('dots-button');
+  // eslint-disable-next-line no-redeclare
+  for (var button of buttons) {
+    button.addEventListener('click', onClickDots);
+  }
+  buttons = $searchResults.getElementsByClassName('plus-button');
+  // eslint-disable-next-line no-redeclare
+  for (var button of buttons) {
+    button.addEventListener('click', saveBookmark);
+  }
+}
+
+function onClickDots(event) {
+  var targetElement = event.target || event.srcElement;
+  var button = targetElement.parentElement;
+  var div = button.parentElement;
+
+  var url = div.getElementsByClassName('view')[0];
+
+  var type = div.getElementsByClassName('view')[1];
+  var icon = div.getElementsByTagName('i')[0];
+
+  moreInfo(url, type, icon, div);
+}
+
+function onClickMinus(event) {
+  var targetElement = event.target || event.srcElement;
+  var button = targetElement.parentElement;
+  var div = button.parentElement;
+  div.remove();
 }
 
 function titleCase(string) {
@@ -24,7 +71,9 @@ function titleCase(string) {
 
 function getResults(event) {
   event.preventDefault();
+  $searchResults.innerHTML = '';
   var inputValue = $searchInput.value;
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.openbrewerydb.org/breweries?by_city=' + inputValue);
   xhr.responseType = 'json';
@@ -41,11 +90,10 @@ function getResults(event) {
       $searchResults.appendChild(search);
       $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
     }
-    data.current = xhr.response;
   });
   xhr.send();
   $searchForm.reset();
-  swapView(data.view);
+  swapView('results-page');
 }
 
 function moreInfo(a, b, c, d) {
@@ -84,13 +132,11 @@ function renderResults(name, street, city, state, zip, url, type) {
   $addressTitle.className = 'underline';
   initialDiv.appendChild($addressTitle);
 
-  var $address = document.createElement('p');
   if (street !== null) {
+    var $address = document.createElement('p');
     $address.textContent = street;
-  } else {
-    $address.textContent = 'No Address Found';
+    initialDiv.appendChild($address);
   }
-  initialDiv.appendChild($address);
 
   var $info = document.createElement('p');
   $info.textContent = city + ', ' + state + ', ' + zip;
@@ -119,68 +165,71 @@ function renderResults(name, street, city, state, zip, url, type) {
   $span2.textContent = ' ' + titleCase(type);
   $type.appendChild($span2);
 
-  var div1 = document.createElement('div');
-  div1.className = 'justify-between flex';
-  initialDiv.appendChild(div1);
-
   var $button = document.createElement('button');
   $button.className = 'dots-button';
-  div1.appendChild($button);
+  initialDiv.appendChild($button);
 
   var $icon = document.createElement('i');
   $icon.className = 'fas fa-ellipsis fa-2x fa-icon';
   $button.appendChild($icon);
 
-  var $bookmarkButton = document.createElement('button');
-  $bookmarkButton.className = 'dots-button';
-  div1.appendChild($bookmarkButton);
-
-  var $plus = document.createElement('i');
-  $plus.className = 'fa-solid fa-plus fa-2x';
-  $bookmarkButton.appendChild($plus);
-  $plus.setAttribute('result-id', data.nextResultId);
-
   $button.addEventListener('click', function () {
     moreInfo($url, $type, $icon, initialDiv);
   });
 
-  $bookmarkButton.addEventListener('click', function () {
-    addToBookmarks();
-  });
+  var $button1 = document.createElement('button');
+  $button1.className = 'plus-button';
+  initialDiv.appendChild($button1);
+
+  var $icon1 = document.createElement('i');
+  $icon1.className = 'fas fa-plus fa-2x fa-icon';
+  $button1.appendChild($icon1);
+
+  $button1.addEventListener('click', saveBookmark);
 
   return initialDiv;
 }
 
-function swapView(string) {
+function saveBookmark(event) {
+  var targetElement = event.target || event.srcElement;
+  var plusButton = targetElement.parentElement;
+  var div = plusButton.parentElement;
 
+  var initialDiv = document.createElement('div');
+  initialDiv.className = 'white-box white-box-dimensions';
+  initialDiv.innerHTML = div.innerHTML;
+
+  var $button1 = document.createElement('button');
+  $button1.className = 'minus-button';
+  initialDiv.appendChild($button1);
+
+  var button = initialDiv.getElementsByClassName('dots-button')[0];
+
+  button.addEventListener('click', onClickDots);
+
+  // eslint-disable-next-line no-redeclare
+  var plusButton = initialDiv.getElementsByClassName('plus-button')[0];
+  plusButton.remove();
+
+  var $icon1 = document.createElement('i');
+  $icon1.className = 'fas fa-minus fa-2x fa-icon';
+  $button1.appendChild($icon1);
+
+  $button1.addEventListener('click', function () {
+    initialDiv.remove();
+  });
+
+  $bookmarks.appendChild(initialDiv);
+}
+
+function swapView(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].dataset.view === string) {
-      $view[i].className = 'view hidden';
+      $view[i].className = 'bigView';
       var currentView = $view[i].dataset.view;
       data.view = currentView;
     } else {
-      $view[i].className = 'view';
+      $view[i].className = 'bigView hidden';
     }
   }
-}
-
-// function bookmarks(element) {
-//   for (var i = 0; i < data.bookmarks.length; i++) {
-//     var name = data.bookmarks[i].name;
-//     var street = data.bookmarks[i].street;
-//     var city = data.bookmarks[i].city;
-//     var state = data.bookmarks[i].state;
-//     var zip = data.bookmarks[i].zip;
-//     var url = data.bookmarks[i].url;
-//     var type = data.bookmarks[i].type;
-//     var search = renderResults(name, street, city, state, zip, url, type);
-//     search.addEventListener('click', getResults);
-//     element.appendChild(search);
-//   }
-// }
-
-function addToBookmarks() {
-  data.bookmarks = 'hello';
-
-  swapView(data.view);
 }

@@ -4,6 +4,7 @@
 
 .nav-color {
   background-color: #f2a13f;
+  position: relative;
 }
 
 .font-caveat {
@@ -46,6 +47,14 @@
   color: black;
 }
 
+.nav-bookmark {
+  position: absolute;
+  left: 93.58%;
+  right: 2.45%;
+  top: 2.44%;
+  bottom: 89%;
+}
+
 button:hover,
 a:hover {
   cursor: pointer;
@@ -62,6 +71,7 @@ button:active {
   border-radius: 3%;
   border-style: solid;
   border-color: #afafaf;
+  position: relative;
 }
 
 .white-box-dimensions {
@@ -88,6 +98,22 @@ button:active {
   padding: 0;
 }
 
+.plus-button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  position: absolute;
+  left: 89.41%;
+}
+
+.minus-button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  position: absolute;
+  left: 89.41%;
+}
+
 h2,
 h3 {
   margin: 0.8rem 0;
@@ -95,10 +121,4 @@ h3 {
 
 p {
   margin: 0.6rem 0;
-}
-
-.bookmark-button {
-  background-color: #f2a13f;
-  border: none;
-  padding: 1rem;
 }
