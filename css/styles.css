@@ -127,3 +127,7 @@ h3 {
 p {
   margin: 0.6rem 0;
 }
+
+form {
+  margin-bottom: 2rem;
+}

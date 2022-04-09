@@ -23,15 +23,6 @@
     max-width: 1200px;
   }
 
-  .nav-bookmark {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 2.44%;
-    bottom: 89%;
-    margin-left: 2rem;
-  }
-
   .column-full,
   .column-half {
     padding: 0 0.5rem;
