@@ -1,3 +1,102 @@
+/* .grey-background {
+  background-color: #f2f2f2;
+}
+
+.nav-color {
+  background-color: #f2a13f;
+}
+
+.font-caveat {
+  font-family: Caveat, cursive;
+}
+
+.font-wellfleet {
+  font-family: Wellfleet, cursive;
+}
+
+.font-vollkorn {
+  font-family: Vollkorn, serif;
+}
+
+.main-img {
+  object-fit: contain;
+  width: 350px;
+  height: 350px;
+}
+
+.search-bar {
+  width: 100%;
+  border: 2px #d4d9de;
+  height: 1.5rem;
+}
+
+.search-icon {
+  color: #8a8a8e;
+}
+
+.submit-button {
+  background-color: white;
+  border: 2px #d4d9de;
+}
+
+.nav-title {
+  font-size: 2.3rem;
+  margin: 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #eff7ef;
+}
+
+.white-box {
+  background-color: white;
+  padding: 0 1rem;
+  margin: 0.3rem 1rem;
+  border-radius: 3%;
+  border-style: solid;
+  border-color: #afafaf;
+}
+
+.white-box-dimensions {
+  width: 350px;
+  max-height: 240px;
+}
+
+.new-dimensions {
+  width: 350px;
+  max-height: 320px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.fa-icon {
+  color: black;
+}
+
+.dots-button {
+  background-color: white;
+  border: none;
+  padding: 0;
+}
+
+h2,
+h3 {
+  margin: 0.8rem 0;
+}
+
+p {
+  margin: 0.6rem 0;
+} */
+
 .grey-background {
   background-color: #f2f2f2;
 }
@@ -49,6 +148,7 @@
 
 .nav-bookmark {
   position: absolute;
+
   left: 87.5%;
   right: 2.45%;
   top: 2.44%;
@@ -58,6 +158,12 @@
   margin-left: 1rem;
   text-decoration: none;
   color: black;
+
+  left: 93.58%;
+  right: 2.45%;
+  top: 2.44%;
+  bottom: 89%;
+
 }
 
 button:hover,
@@ -126,4 +232,8 @@ h3 {
 
 p {
   margin: 0.6rem 0;
+}
+
+form {
+  margin-bottom: 2rem;
 }
