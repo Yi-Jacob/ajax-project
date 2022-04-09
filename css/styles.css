@@ -148,10 +148,22 @@ p {
 
 .nav-bookmark {
   position: absolute;
+
+  left: 87.5%;
+  right: 2.45%;
+  top: 2.44%;
+  bottom: 89%;
+  font-size: 2.3rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: black;
+
   left: 93.58%;
   right: 2.45%;
   top: 2.44%;
   bottom: 89%;
+
 }
 
 button:hover,
@@ -220,4 +232,8 @@ h3 {
 
 p {
   margin: 0.6rem 0;
+}
+
+form {
+  margin-bottom: 2rem;
 }
