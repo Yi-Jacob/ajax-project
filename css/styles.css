@@ -49,10 +49,15 @@
 
 .nav-bookmark {
   position: absolute;
-  left: 93.58%;
+  left: 87.5%;
   right: 2.45%;
   top: 2.44%;
   bottom: 89%;
+  font-size: 2.3rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: black;
 }
 
 button:hover,
