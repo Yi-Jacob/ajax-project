@@ -81,12 +81,13 @@ button:active {
 
 .white-box-dimensions {
   width: 350px;
-  max-height: 240px;
+
+  max-height: 270px;
 }
 
 .new-dimensions {
   width: 350px;
-  max-height: 320px;
+  max-height: 340px;
 }
 
 .underline {

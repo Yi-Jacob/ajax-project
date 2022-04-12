@@ -15,7 +15,7 @@ $showBookmark.addEventListener('click', function () {
 $home.addEventListener('click', function () {
   swapView('search-page');
 });
-swapView(data.view);
+// swapView(data.view);
 
 onLoad();
 function onLoad() {
