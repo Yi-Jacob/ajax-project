@@ -15,7 +15,6 @@ $showBookmark.addEventListener('click', function () {
 $home.addEventListener('click', function () {
   swapView('search-page');
 });
-// swapView(data.view);
 
 onLoad();
 function onLoad() {
@@ -28,7 +27,6 @@ function onLoad() {
   for (var button of buttons) {
     button.addEventListener('click', onClickMinus);
   }
-
   buttons = $searchResults.getElementsByClassName('dots-button');
   // eslint-disable-next-line no-redeclare
   for (var button of buttons) {
