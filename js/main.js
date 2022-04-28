@@ -7,10 +7,17 @@ var $view = document.querySelectorAll('.bigView');
 var $showBookmark = document.getElementById('bookmark');
 var $bookmarks = document.getElementById('bookmarks');
 var $home = document.getElementById('home');
+var $bookmakHeader = document.getElementById('bookmark-header');
 
 $submitButton.addEventListener('click', getResults);
 $showBookmark.addEventListener('click', function () {
   swapView('bookmarks-page');
+  if (data.bookmarks.length === 0) {
+    $bookmakHeader.textContent = 'No Bookmarks Found';
+  } else {
+    $bookmakHeader.textContent = 'Bookmarks';
+    // console.log('test');
+  }
 });
 $home.addEventListener('click', function () {
   swapView('search-page');
@@ -76,17 +83,29 @@ function getResults(event) {
   xhr.open('GET', 'https://api.openbrewerydb.org/breweries?by_city=' + inputValue);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    for (var i = 0; i < xhr.response.length; i++) {
-      var name = xhr.response[i].name;
-      var street = xhr.response[i].street;
-      var city = xhr.response[i].city;
-      var state = xhr.response[i].state;
-      var zip = xhr.response[i].postal_code;
-      var url = xhr.response[i].website_url;
-      var type = xhr.response[i].brewery_type;
-      var search = renderResults(name, street, city, state, zip, url, type);
-      $searchResults.appendChild(search);
-      $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
+    if (xhr.response.length === 0) {
+      $resultsHeader.textContent = 'No Results found for ' + '"' + titleCase(inputValue) + '"';
+      var div = document.createElement('div');
+      var $noResults = document.createElement('p');
+      $noResults.textContent = 'Returing Home...';
+      div.appendChild($noResults);
+      $resultsHeader.appendChild(div);
+      setTimeout(() => {
+        swapView('search-page');
+      }, 3500);
+    } else {
+      for (var i = 0; i < xhr.response.length; i++) {
+        var name = xhr.response[i].name;
+        var street = xhr.response[i].street;
+        var city = xhr.response[i].city;
+        var state = xhr.response[i].state;
+        var zip = xhr.response[i].postal_code;
+        var url = xhr.response[i].website_url;
+        var type = xhr.response[i].brewery_type;
+        var search = renderResults(name, street, city, state, zip, url, type);
+        $searchResults.appendChild(search);
+        $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
+      }
     }
   });
   xhr.send();
