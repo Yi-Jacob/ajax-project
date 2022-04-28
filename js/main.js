@@ -2,22 +2,16 @@ var $searchInput = document.getElementById('input');
 var $searchForm = document.getElementById('search-form');
 var $searchResults = document.getElementById('results');
 var $resultsHeader = document.getElementById('results-header');
+var $bookmarksHeader = document.getElementById('bookmarks-header');
 var $submitButton = document.querySelector('.submit-button');
 var $view = document.querySelectorAll('.bigView');
 var $showBookmark = document.getElementById('bookmark');
 var $bookmarks = document.getElementById('bookmarks');
 var $home = document.getElementById('home');
-var $bookmakHeader = document.getElementById('bookmark-header');
 
 $submitButton.addEventListener('click', getResults);
 $showBookmark.addEventListener('click', function () {
   swapView('bookmarks-page');
-  if (data.bookmarks.length === 0) {
-    $bookmakHeader.textContent = 'No Bookmarks Found';
-  } else {
-    $bookmakHeader.textContent = 'Bookmarks';
-    // console.log('test');
-  }
 });
 $home.addEventListener('click', function () {
   swapView('search-page');
@@ -34,6 +28,7 @@ function onLoad() {
   for (var button of buttons) {
     button.addEventListener('click', onClickMinus);
   }
+
   buttons = $searchResults.getElementsByClassName('dots-button');
   // eslint-disable-next-line no-redeclare
   for (var button of buttons) {
@@ -64,6 +59,9 @@ function onClickMinus(event) {
   var button = targetElement.parentElement;
   var div = button.parentElement;
   div.remove();
+  if ($bookmarks.getElementsByClassName('white-box').length === 0) {
+    $bookmarksHeader.textContent = 'No bookmarks added so far';
+  }
 }
 
 function titleCase(string) {
@@ -77,13 +75,27 @@ function titleCase(string) {
 function getResults(event) {
   event.preventDefault();
   $searchResults.innerHTML = '';
+  $resultsHeader.textContent = '';
   var inputValue = $searchInput.value;
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.openbrewerydb.org/breweries?by_city=' + inputValue);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    if (xhr.response.length === 0) {
+    if (xhr.response.length !== 0) {
+      for (var i = 0; i < xhr.response.length; i++) {
+        var name = xhr.response[i].name;
+        var street = xhr.response[i].street;
+        var city = xhr.response[i].city;
+        var state = xhr.response[i].state;
+        var zip = xhr.response[i].postal_code;
+        var url = xhr.response[i].website_url;
+        var type = xhr.response[i].brewery_type;
+        $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
+        var search = renderResults(name, street, city, state, zip, url, type);
+        $searchResults.appendChild(search);
+      }
+    } else {
       $resultsHeader.textContent = 'No Results found for ' + '"' + titleCase(inputValue) + '"';
       var div = document.createElement('div');
       var $noResults = document.createElement('p');
@@ -93,20 +105,8 @@ function getResults(event) {
       setTimeout(() => {
         swapView('search-page');
       }, 3500);
-    } else {
-      for (var i = 0; i < xhr.response.length; i++) {
-        var name = xhr.response[i].name;
-        var street = xhr.response[i].street;
-        var city = xhr.response[i].city;
-        var state = xhr.response[i].state;
-        var zip = xhr.response[i].postal_code;
-        var url = xhr.response[i].website_url;
-        var type = xhr.response[i].brewery_type;
-        var search = renderResults(name, street, city, state, zip, url, type);
-        $searchResults.appendChild(search);
-        $resultsHeader.textContent = 'Results for ' + '"' + titleCase(inputValue) + '"';
-      }
     }
+
   });
   xhr.send();
   $searchForm.reset();
@@ -232,9 +232,7 @@ function saveBookmark(event) {
   $icon1.className = 'fas fa-minus fa-2x fa-icon';
   $button1.appendChild($icon1);
 
-  $button1.addEventListener('click', function () {
-    initialDiv.remove();
-  });
+  $button1.addEventListener('click', onClickMinus);
 
   $bookmarks.appendChild(initialDiv);
 }
@@ -242,6 +240,13 @@ function saveBookmark(event) {
 function swapView(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].dataset.view === string) {
+      if (string === 'bookmarks-page') {
+        if ($bookmarks.getElementsByClassName('white-box').length === 0) {
+          $bookmarksHeader.textContent = 'No bookmarks added so far';
+        } else {
+          $bookmarksHeader.textContent = 'Bookmarks';
+        }
+      }
       $view[i].className = 'bigView';
       var currentView = $view[i].dataset.view;
       data.view = currentView;
