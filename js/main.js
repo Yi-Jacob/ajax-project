@@ -8,6 +8,7 @@ var $view = document.querySelectorAll('.bigView');
 var $showBookmark = document.getElementById('bookmark');
 var $bookmarks = document.getElementById('bookmarks');
 var $home = document.getElementById('home');
+var loadingSpinner = document.querySelector('.lds-spinner');
 
 $submitButton.addEventListener('click', getResults);
 $showBookmark.addEventListener('click', function () {
@@ -81,9 +82,14 @@ function getResults(event) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.openbrewerydb.org/breweries?by_city=' + inputValue);
   xhr.responseType = 'json';
+  if (xhr.readyState < 4) {
+    $resultsHeader.textContent = 'Loading...';
+    loadingSpinner.className = 'lds-spinner';
+  }
   xhr.addEventListener('load', function () {
     if (xhr.response.length !== 0) {
       for (var i = 0; i < xhr.response.length; i++) {
+        loadingSpinner.className = 'lds-spinner hidden';
         var name = xhr.response[i].name;
         var street = xhr.response[i].street;
         var city = xhr.response[i].city;
@@ -242,7 +248,7 @@ function swapView(string) {
     if ($view[i].dataset.view === string) {
       if (string === 'bookmarks-page') {
         if ($bookmarks.getElementsByClassName('white-box').length === 0) {
-          $bookmarksHeader.textContent = 'No bookmarks added so far';
+          $bookmarksHeader.textContent = 'No bookmarks Found';
         } else {
           $bookmarksHeader.textContent = 'Bookmarks';
         }
