@@ -134,10 +134,9 @@ form {
 
 .lds-spinner {
   display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-  margin-left: 10rem;
+  position: absolute;
+  right: 0;
+  left: 0;
 }
 
 .lds-spinner div {
