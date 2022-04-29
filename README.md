@@ -17,7 +17,7 @@ Try the application live [here](https://yi-jacob.github.io/ajax-project/)
 
 - User can search and view breweries based off a city
 - User can click dropdown to view more info on the brewery
-- User can bookmark a brewery to view
+- User can bookmark a brewery to their local storage
 - User can view and remove their bookmarks
 
 ## Preview
