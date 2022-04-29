@@ -11,7 +11,7 @@ A dynamic JavaScript solo project for beer drinkers looking for a new brewery.
 
 ## Live Demo
 
-Try the application live at [here](https://yi-jacob.github.io/ajax-project/)
+Try the application live [here](https://yi-jacob.github.io/ajax-project/)
 
 ## Features
 
