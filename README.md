@@ -8,6 +8,9 @@ A dynamic JavaScript solo project for beer drinkers looking for a new brewery.
 - CSS3
 - HTML
 - AJAX
+- XMLHTTPRequest
+- Local Storage
+- RestAPI
 
 ## Live Demo
 
