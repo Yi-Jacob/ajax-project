@@ -110,7 +110,7 @@ function getResults(event) {
       $resultsHeader.appendChild(div);
       setTimeout(() => {
         swapView('search-page');
-      }, 3500);
+      }, 2500);
     }
 
   });

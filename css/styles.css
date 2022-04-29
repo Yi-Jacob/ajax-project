@@ -135,7 +135,10 @@ form {
 .lds-spinner {
   display: inline-block;
   position: absolute;
-  left: 0;
+  left: 1;
+  color: black;
+  background-color: black;
+  border-radius: 50%;
 }
 
 .lds-spinner div {
